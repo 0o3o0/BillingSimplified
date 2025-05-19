@@ -18,64 +18,156 @@
     <style>
       body {
         font-family: "Inter", sans-serif;
-        background: linear-gradient(270deg, #6b46c1, #3b82f6, #6b46c1);
-        background-size: 600% 600%;
-        animation: gradientBG 20s ease infinite;
-      }
-      @keyframes gradientBG {
-        0% {
-          background-position: 0% 50%;
-        }
-        50% {
-          background-position: 100% 50%;
-        }
-        100% {
-          background-position: 0% 50%;
-        }
+        background-color: #ffffff;
+        color: #1e293b; /* slate-800 */
       }
       .fade-in {
-        animation: fadeIn 1.2s ease forwards;
         opacity: 0;
+        transform: translateY(20px);
+        animation: fadeInUp 1s ease forwards;
       }
-      @keyframes fadeIn {
+      .fade-in-delayed {
+        animation-delay: 0.5s;
+      }
+      .fade-in-delay-2 {
+        animation-delay: 1s;
+      }
+      .fade-in-delay-3 {
+        animation-delay: 1.5s;
+      }
+      .fade-in-delay-4 {
+        animation-delay: 2s;
+      }
+      .fade-in-delay-5 {
+        animation-delay: 2.5s;
+      }
+
+      @keyframes fadeInUp {
         to {
           opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      a.btn-primary {
+        @apply bg-violet-600 text-white px-8 py-3 rounded-full font-semibold shadow-lg transition transform;
+      }
+      a.btn-primary:hover {
+        @apply bg-violet-700 scale-105;
+      }
+
+      /* אנימציה לגדילת גרף */
+      .bar {
+        transform-origin: bottom;
+        animation: growBar 1.5s ease forwards;
+      }
+      .bar.delay-1 {
+        animation-delay: 0.3s;
+      }
+      .bar.delay-2 {
+        animation-delay: 0.6s;
+      }
+      .bar.delay-3 {
+        animation-delay: 0.9s;
+      }
+      .bar.delay-4 {
+        animation-delay: 1.2s;
+      }
+
+      @keyframes growBar {
+        from {
+          transform: scaleY(0);
+        }
+        to {
+          transform: scaleY(1);
         }
       }
     </style>
   </head>
-  <body class="text-gray-100">
+  <body class="text-slate-800">
     <!-- Hero Section -->
     <section
       class="min-h-screen flex flex-col justify-center items-center text-center px-6 py-12"
     >
       <h1
-        class="text-5xl md:text-7xl font-extrabold mb-6 drop-shadow-lg fade-in"
-        style="animation-delay: 0.3s"
+        class="text-5xl md:text-7xl font-extrabold mb-6 drop-shadow-sm fade-in"
+        style="animation-delay: 0.3s; color:#6b46c1;" /* violet-600 */
       >
         Automate Usage-Based Billing
       </h1>
       <p
-        class="text-xl md:text-2xl max-w-3xl mb-8 text-indigo-200 fade-in"
+        class="text-xl md:text-2xl max-w-3xl mb-8 text-gray-600 fade-in"
         style="animation-delay: 0.6s"
       >
         No spreadsheets. No human errors. Just results.
       </p>
       <a
         href="#contact"
-        class="bg-white text-indigo-700 px-8 py-3 rounded-full font-semibold hover:scale-105 transition transform shadow-lg fade-in"
+        class="btn-primary fade-in"
         style="animation-delay: 0.9s"
         >Get a Demo</a
       >
     </section>
 
+    <!-- Animated SVG Section - איש עם משקפיים וגרפים -->
+    <section class="flex justify-center my-12 fade-in" style="animation-delay:1.2s;">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="200"
+        height="200"
+        viewBox="0 0 64 64"
+        role="img"
+        aria-label="Illustration of a person with glasses pointing at a bar chart"
+      >
+        <!-- ראש עם משקפיים -->
+        <circle cx="32" cy="20" r="10" fill="#6b46c1" />
+        <rect x="22" y="18" width="20" height="6" fill="#a78bfa" />
+        <!-- יד מצביעה -->
+        <rect x="45" y="30" width="4" height="12" fill="#6b46c1" />
+        <circle cx="47" cy="30" r="4" fill="#a78bfa" />
+        <!-- גרף עמודות עם אנימציית גדילה -->
+        <rect
+          x="10"
+          y="40"
+          width="6"
+          height="14"
+          fill="#6b46c1"
+          class="bar delay-1"
+        />
+        <rect
+          x="20"
+          y="36"
+          width="6"
+          height="18"
+          fill="#7c3aed"
+          class="bar delay-2"
+        />
+        <rect
+          x="30"
+          y="32"
+          width="6"
+          height="22"
+          fill="#a78bfa"
+          class="bar delay-3"
+        />
+        <rect
+          x="40"
+          y="28"
+          width="6"
+          height="26"
+          fill="#c4b5fd"
+          class="bar delay-4"
+        />
+      </svg>
+    </section>
+
     <!-- Logos Section -->
-    <section class="py-8 bg-gray-900/40 text-center">
-      <p class="uppercase text-sm text-indigo-300 mb-6 tracking-widest">
+    <section class="py-8 bg-gray-50 text-center fade-in" style="animation-delay: 1.5s">
+      <p class="uppercase text-sm text-gray-400 mb-6 tracking-widest">
         Trusted by
       </p>
       <div
-        class="flex justify-center items-center gap-12 flex-wrap text-indigo-200 font-semibold text-lg"
+        class="flex justify-center items-center gap-12 flex-wrap text-gray-600 font-semibold text-lg"
       >
         <span class="opacity-70 hover:opacity-100 transition cursor-pointer">
           Fiverr
@@ -90,55 +182,51 @@
     </section>
 
     <!-- Problem & Solution -->
-    <section class="py-20 px-6 text-center max-w-4xl mx-auto">
+    <section class="py-20 px-6 text-center max-w-4xl mx-auto fade-in" style="animation-delay: 1.8s">
       <h2
-        class="text-4xl font-bold mb-6 text-white drop-shadow-md fade-in"
-        style="animation-delay: 1.2s"
+        class="text-4xl font-bold mb-6 drop-shadow-sm"
+        style="color:#6b46c1;"
       >
         Billing shouldn't be a bottleneck
       </h2>
-      <p
-        class="text-indigo-300 text-lg max-w-3xl mx-auto mb-6 fade-in"
-        style="animation-delay: 1.5s"
-      >
-        Manual billing is slow, error-prone and doesn't scale. Billing
-        Simplified automates the end-of-month chaos — so your team can focus on
-        growth.
+      <p class="text-gray-600 text-lg max-w-3xl mx-auto mb-6">
+        Manual billing is slow, error-prone and doesn't scale. Billing Simplified automates the end-of-month chaos — so your team can focus on growth.
       </p>
     </section>
 
     <!-- 3-Step Process -->
     <section
-      class="bg-gray-900/50 py-20 px-6 rounded-lg max-w-5xl mx-auto text-left"
+      class="bg-gray-50 py-20 px-6 rounded-lg max-w-5xl mx-auto text-left shadow-md fade-in"
+      style="animation-delay: 2.1s"
     >
       <h2
-        class="text-4xl font-bold mb-10 text-white drop-shadow-md fade-in"
-        style="animation-delay: 1.8s"
+        class="text-4xl font-bold mb-10 drop-shadow-sm"
+        style="color:#6b46c1;"
       >
         How It Works
       </h2>
-      <div class="grid md:grid-cols-3 gap-12 fade-in" style="animation-delay: 2s">
+      <div class="grid md:grid-cols-3 gap-12">
         <div>
-          <h3 class="text-2xl font-semibold mb-3 text-indigo-300">
+          <h3 class="text-2xl font-semibold mb-3 text-violet-600">
             1. Define your billing logic
           </h3>
-          <p class="text-indigo-200">
+          <p class="text-gray-600">
             We help you map your usage model and revenue rules.
           </p>
         </div>
         <div>
-          <h3 class="text-2xl font-semibold mb-3 text-indigo-300">
+          <h3 class="text-2xl font-semibold mb-3 text-violet-600">
             2. Plug into your usage data
           </h3>
-          <p class="text-indigo-200">
+          <p class="text-gray-600">
             We connect directly to your sources — APIs, Excel, or databases.
           </p>
         </div>
         <div>
-          <h3 class="text-2xl font-semibold mb-3 text-indigo-300">
+          <h3 class="text-2xl font-semibold mb-3 text-violet-600">
             3. Get ready-to-send invoices
           </h3>
-          <p class="text-indigo-200">
+          <p class="text-gray-600">
             Receive clean, accurate invoice files on time — every time.
           </p>
         </div>
@@ -147,22 +235,31 @@
 
     <!-- Benefits Section -->
     <section
-      class="py-20 px-6 text-center max-w-5xl mx-auto grid md:grid-cols-4 gap-10 text-indigo-200"
+      class="py-20 px-6 text-center max-w-5xl mx-auto grid md:grid-cols-4 gap-10 text-gray-600 fade-in"
+      style="animation-delay: 2.4s"
     >
       <h2 class="sr-only">Benefits</h2>
-      <div class="bg-indigo-700/30 rounded-xl py-8 px-6 hover:bg-indigo-700/50 transition cursor-default">
+      <div
+        class="bg-violet-100 rounded-xl py-8 px-6 hover:bg-violet-200 transition cursor-default shadow-md"
+      >
         <p class="text-3xl mb-2">✅</p>
         <p class="font-semibold text-lg">Save 20+ hours monthly</p>
       </div>
-      <div class="bg-indigo-700/30 rounded-xl py-8 px-6 hover:bg-indigo-700/50 transition cursor-default">
+      <div
+        class="bg-violet-100 rounded-xl py-8 px-6 hover:bg-violet-200 transition cursor-default shadow-md"
+      >
         <p class="text-3xl mb-2">✅</p>
         <p class="font-semibold text-lg">Eliminate billing errors</p>
       </div>
-      <div class="bg-indigo-700/30 rounded-xl py-8 px-6 hover:bg-indigo-700/50 transition cursor-default">
+      <div
+        class="bg-violet-100 rounded-xl py-8 px-6 hover:bg-violet-200 transition cursor-default shadow-md"
+      >
         <p class="text-3xl mb-2">✅</p>
         <p class="font-semibold text-lg">Works with your stack</p>
       </div>
-      <div class="bg-indigo-700/30 rounded-xl py-8 px-6 hover:bg-indigo-700/50 transition cursor-default">
+      <div
+        class="bg-violet-100 rounded-xl py-8 px-6 hover:bg-violet-200 transition cursor-default shadow-md"
+      >
         <p class="text-3xl mb-2">✅</p>
         <p class="font-semibold text-lg">Personalized onboarding</p>
       </div>
@@ -171,22 +268,17 @@
     <!-- Final CTA -->
     <section
       id="contact"
-      class="bg-indigo-800 py-20 px-6 text-center text-indigo-100 rounded-t-3xl"
+      class="py-20 px-6 bg-violet-600 text-white text-center fade-in"
+      style="animation-delay: 2.7s"
     >
-      <h2 class="text-4xl font-bold mb-6 drop-shadow-lg fade-in" style="animation-delay: 2.3s">
-        Let us simplify your billing
-      </h2>
-      <p
-        class="text-lg mb-8 max-w-3xl mx-auto fade-in"
-        style="animation-delay: 2.5s"
-      >
-        Talk to us and see how much time and money you could save.
+      <h2 class="text-4xl font-bold mb-6">Ready to simplify your billing?</h2>
+      <p class="mb-8 max-w-xl mx-auto">
+        Let’s get your free demo scheduled today — see how we save you time and money.
       </p>
       <a
-        href="mailto:hello@billing-simplified.com"
-        class="bg-white text-indigo-700 px-8 py-3 rounded-full font-semibold hover:scale-105 transition transform shadow-lg fade-in"
-        style="animation-delay: 2.7s"
-        >Schedule a Call</a
+        href="tel:+1234567890"
+        class="btn-primary bg-white text-violet-600 hover:bg-gray-100"
+        >Call Us Now</a
       >
     </section>
   </body>
