@@ -20,7 +20,6 @@
   </style>
 </head>
 <body>
-  <!-- Navbar -->
   <nav id="mainNavbar" class="fixed top-0 left-0 w-full bg-white shadow flex justify-between items-center px-6 py-4 z-40">
     <div class="font-bold text-violet-600 text-2xl">Billing Simplified</div>
     <div class="space-x-6">
@@ -32,14 +31,12 @@
 
   <div class="h-16"></div>
 
-  <!-- Hero Section -->
   <section id="product" class="min-h-screen flex flex-col items-center justify-center text-center px-6 py-12">
     <h1 class="text-5xl md:text-7xl font-extrabold mb-4 fade-in">Automate Usage-Based Billing</h1>
     <p class="text-xl md:text-2xl text-gray-600 mb-6 fade-in">No spreadsheets. No human errors. Just results.</p>
     <a href="#contact" class="bg-violet-600 text-white px-6 py-3 rounded-full hover:scale-105 transition fade-in btn-animated">Get a Demo</a>
   </section>
 
-  <!-- Logos Section -->
   <section id="solutions" class="py-20 bg-gray-50 text-center">
     <p class="text-sm uppercase text-gray-400 mb-4">Trusted by</p>
     <div class="flex justify-center space-x-12">
@@ -49,13 +46,11 @@
     </div>
   </section>
 
-  <!-- Problem & Solution -->
   <section class="py-20 px-6 text-center max-w-4xl mx-auto">
     <h2 class="text-4xl font-bold mb-6 text-violet-600 fade-in">Billing shouldn't be a bottleneck</h2>
     <p class="text-lg text-gray-600 fade-in">We automate the end-of-month chaos so your team can focus on growth.</p>
   </section>
 
-  <!-- How It Works -->
   <section class="py-20 px-6 max-w-5xl mx-auto">
     <h2 class="text-4xl font-bold mb-10 text-center text-violet-600 fade-in">How It Works</h2>
     <div class="grid md:grid-cols-3 gap-8">
@@ -65,21 +60,18 @@
     </div>
   </section>
 
-  <!-- Final CTA -->
   <section class="py-20 bg-violet-600 text-white text-center">
     <h2 class="text-4xl font-bold mb-4 fade-in">Ready to Simplify Your Billing?</h2>
     <p class="mb-6 fade-in">Book your free demo and discover how much time and money you can save.</p>
     <a href="#contact" class="bg-white text-violet-600 px-6 py-3 rounded-full hover:scale-105 transition fade-in btn-animated">Get Started</a>
   </section>
 
-  <!-- Floating Action Bar -->
   <div id="actionBar" class="w-[50%] mx-auto bg-white shadow-lg rounded-full flex justify-center space-x-4 py-2 px-6">
     <button class="bg-violet-600 text-white px-4 py-2 rounded-full hover:bg-violet-700 transition btn-animated">Request Pricing</button>
     <button class="bg-violet-600 text-white px-4 py-2 rounded-full hover:bg-violet-700 transition btn-animated">Book a Demo</button>
     <button class="bg-violet-600 text-white px-4 py-2 rounded-full hover:bg-violet-700 transition btn-animated">Take a Tour</button>
   </div>
 
-  <!-- Scroll Logic -->
   <script>
     const actionBar = document.getElementById("actionBar");
     const mainNavbar = document.getElementById("mainNavbar");
@@ -90,21 +82,18 @@
       return section.offsetTop + section.offsetHeight / 2;
     }
 
-    function getSectionBottom(section) {
-      return section.offsetTop + section.offsetHeight;
-    }
-
     window.addEventListener("scroll", () => {
       const scrollY = window.scrollY;
       const productMiddle = getSectionMiddle(productSection);
-      const productBottom = getSectionBottom(productSection);
 
-      if (scrollY > productBottom) {
+      // Show floating action bar earlier (middle of product section)
+      if (scrollY > productMiddle) {
         actionBar.style.top = "20px";
       } else {
         actionBar.style.top = "-100px";
       }
 
+      // Hide main navbar after half product section
       if (scrollY > productMiddle) {
         mainNavbar.style.top = "-100px";
       } else {
