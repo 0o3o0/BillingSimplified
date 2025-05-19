@@ -38,8 +38,23 @@
         headers: { "Content-Type": "application/json" }
       });
       form.reset();
-      alert("Thank you! We received your request.");
-    });
+  document.getElementById("leadForm").addEventListener("submit", async function(e) {
+  e.preventDefault();
+  const form = e.target;
+  const data = {
+    name: form.name.value,
+    email: form.email.value,
+    phone: form.phone.value
+  };
+  await fetch("https://script.google.com/macros/s/AKfycbxz1hRqqq5x7Tr5Qf1mnHiRUvIjF9_XMR0-GpqjXLZ1m2N_OHpAgIvEVMvZ89-Y0jBufQ/exec", {
+    method: "POST",
+    body: JSON.stringify(data),
+    headers: { "Content-Type": "application/json" }
+  });
+  form.reset();
+  // הפנייה לעמוד תודה
+  window.location.href = "thank-you.html"; 
+  });
   </script>
 </body>
 </html>
