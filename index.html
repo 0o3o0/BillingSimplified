@@ -140,76 +140,40 @@
         }
       });
     });
+  const modal = document.getElementById("leadModal");
+  const closeModalBtn = document.getElementById("closeModal");
+  const demoButtons = document.querySelectorAll("a[href='#contact'], button:contains('Book a Demo'), button:contains('Get a Demo')");
+
+  demoButtons.forEach(btn => {
+    btn.addEventListener("click", (e) => {
+      e.preventDefault();
+      modal.classList.remove("hidden");
+      modal.classList.add("flex");
+    });
+  });
+
+  closeModalBtn.addEventListener("click", () => {
+    modal.classList.add("hidden");
+  });
+
+  document.getElementById("leadForm").addEventListener("submit", async (e) => {
+    e.preventDefault();
+    const form = e.target;
+    const data = {
+      name: form.name.value,
+      email: form.email.value,
+      phone: form.phone.value
+    };
+    await fetch("https://script.google.com/macros/s/AKfycbxz1hRqqq5x7Tr5Qf1mnHiRUvIjF9_XMR0-GpqjXLZ1m2N_OHpAgIvEVMvZ89-Y0jBufQ/exec", {
+      method: "POST",
+      body: JSON.stringify(data),
+      headers: { "Content-Type": "application/json" }
+    });
+    form.reset();
+    modal.classList.add("hidden");
+    alert("Thank you! We received your request.");
+  });
   </script>
-<script>
-  const modal = document.getElementById("leadModal");
-  const closeModalBtn = document.getElementById("closeModal");
-  const demoButtons = document.querySelectorAll("a[href='#contact'], button:contains('Book a Demo'), button:contains('Get a Demo')");
-
-  demoButtons.forEach(btn => {
-    btn.addEventListener("click", (e) => {
-      e.preventDefault();
-      modal.classList.remove("hidden");
-      modal.classList.add("flex");
-    });
-  });
-
-  closeModalBtn.addEventListener("click", () => {
-    modal.classList.add("hidden");
-  });
-
-  document.getElementById("leadForm").addEventListener("submit", async (e) => {
-    e.preventDefault();
-    const form = e.target;
-    const data = {
-      name: form.name.value,
-      email: form.email.value,
-      phone: form.phone.value
-    };
-    await fetch("https://script.google.com/macros/s/AKfycbxz1hRqqq5x7Tr5Qf1mnHiRUvIjF9_XMR0-GpqjXLZ1m2N_OHpAgIvEVMvZ89-Y0jBufQ/exec", {
-      method: "POST",
-      body: JSON.stringify(data),
-      headers: { "Content-Type": "application/json" }
-    });
-    form.reset();
-    modal.classList.add("hidden");
-    alert("Thank you! We received your request.");
-  });
-  const modal = document.getElementById("leadModal");
-  const closeModalBtn = document.getElementById("closeModal");
-  const demoButtons = document.querySelectorAll("a[href='#contact'], button:contains('Book a Demo'), button:contains('Get a Demo')");
-
-  demoButtons.forEach(btn => {
-    btn.addEventListener("click", (e) => {
-      e.preventDefault();
-      modal.classList.remove("hidden");
-      modal.classList.add("flex");
-    });
-  });
-
-  closeModalBtn.addEventListener("click", () => {
-    modal.classList.add("hidden");
-  });
-
-  document.getElementById("leadForm").addEventListener("submit", async (e) => {
-    e.preventDefault();
-    const form = e.target;
-    const data = {
-      name: form.name.value,
-      email: form.email.value,
-      phone: form.phone.value
-    };
-    await fetch("https://script.google.com/macros/s/AKfycbxz1hRqqq5x7Tr5Qf1mnHiRUvIjF9_XMR0-GpqjXLZ1m2N_OHpAgIvEVMvZ89-Y0jBufQ/exec", {
-      method: "POST",
-      body: JSON.stringify(data),
-      headers: { "Content-Type": "application/json" }
-    });
-    form.reset();
-    modal.classList.add("hidden");
-    alert("Thank you! We received your request.");
-  });
-
-</script>
 <!-- Modal Form -->
 <div id="leadModal" class="fixed inset-0 bg-black bg-opacity-50 hidden justify-center items-center z-50">
   <div class="bg-white p-6 rounded shadow max-w-md w-full text-center">
