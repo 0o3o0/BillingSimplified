@@ -17,42 +17,70 @@
     .btn-animated { position: relative; overflow: hidden; }
     .btn-animated::after { content: ""; position: absolute; top: 0; left: -100%; width: 100%; height: 100%; background: rgba(255,255,255,0.3); transform: skewX(-45deg); transition: left 0.5s ease; }
     .btn-animated:hover::after { left: 100%; }
-    .pulse { animation: pulse 2s infinite; }
-    @keyframes pulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.05); } }
   </style>
 </head>
 <body>
 
-  <!-- Existing Sections Remain Unchanged -->
+  <!-- Navigation -->
+  <nav id="mainNavbar" class="fixed top-0 left-0 w-full bg-white shadow flex justify-between items-center px-6 py-4 z-40">
+    <div class="font-bold text-violet-600 text-2xl">Billing Simplified</div>
+    <div class="space-x-6">
+      <a href="#product" class="hover:text-violet-600">Product</a>
+      <a href="#solutions" class="hover:text-violet-600">Solutions</a>
+      <a href="#contact" class="bg-violet-600 text-white px-4 py-2 rounded-full hover:bg-violet-700 transition">Book a Demo</a>
+    </div>
+  </nav>
 
-  <!-- Interactive Timeline -->
-  <section class="py-20 px-6 max-w-5xl mx-auto text-center">
-    <h2 class="text-4xl font-bold mb-10 text-violet-600 fade-in">Our Process</h2>
-    <div class="relative border-l-4 border-violet-600 pl-8">
-      <div class="mb-8 fade-in">
-        <h3 class="text-xl font-semibold">Step 1: Consultation</h3>
-        <p class="text-gray-600">Understand your billing needs.</p>
-      </div>
-      <div class="mb-8 fade-in">
-        <h3 class="text-xl font-semibold">Step 2: Integration</h3>
-        <p class="text-gray-600">Connect to your data sources.</p>
-      </div>
-      <div class="mb-8 fade-in">
-        <h3 class="text-xl font-semibold">Step 3: Delivery</h3>
-        <p class="text-gray-600">Receive accurate, ready-to-send invoices.</p>
-      </div>
+  <div class="h-16"></div>
+
+  <!-- Hero Section -->
+  <section id="product" class="min-h-screen flex flex-col items-center justify-center text-center px-6 py-12">
+    <h1 class="text-5xl md:text-7xl font-extrabold mb-4 fade-in">Automate Usage-Based Billing</h1>
+    <p class="text-xl md:text-2xl text-gray-600 mb-6 fade-in">No spreadsheets. No human errors. Just results.</p>
+    <a href="#contact" class="bg-violet-600 text-white px-6 py-3 rounded-full hover:scale-105 transition fade-in btn-animated">Get a Demo</a>
+  </section>
+
+  <!-- Logos Section -->
+  <section id="solutions" class="py-20 bg-gray-50 text-center">
+    <p class="text-sm uppercase text-gray-400 mb-4">Trusted by</p>
+    <div class="flex justify-center space-x-12">
+      <span class="text-gray-600 hover:text-violet-600 cursor-pointer">Fiverr</span>
+      <span class="text-gray-600 hover:text-violet-600 cursor-pointer">Lemonade</span>
+      <span class="text-gray-600 hover:text-violet-600 cursor-pointer">Your Company</span>
     </div>
   </section>
 
-  <!-- CTA Bar with Pulse Effect -->
-  <section class="py-10 bg-yellow-400 text-white text-center pulse">
-    <h2 class="text-3xl font-bold mb-4">Get Started with Billing Simplified</h2>
-    <a href="#contact" class="bg-white text-yellow-600 px-6 py-3 rounded-full hover:bg-gray-100 transition">Book Your Free Demo</a>
+  <!-- Problem & Solution -->
+  <section class="py-20 px-6 text-center max-w-4xl mx-auto">
+    <h2 class="text-4xl font-bold mb-6 text-violet-600 fade-in">Billing shouldn't be a bottleneck</h2>
+    <p class="text-lg text-gray-600 fade-in">We automate the end-of-month chaos so your team can focus on growth.</p>
   </section>
 
-  <!-- White Footer Spacer -->
-  <footer class="h-20 bg-white"></footer>
+  <!-- How It Works -->
+  <section class="py-20 px-6 max-w-5xl mx-auto">
+    <h2 class="text-4xl font-bold mb-10 text-center text-violet-600 fade-in">How It Works</h2>
+    <div class="grid md:grid-cols-3 gap-8">
+      <div class="fade-in"><h3 class="text-xl font-semibold mb-2">1. Define your billing logic</h3><p class="text-gray-600">We map your usage model and revenue rules.</p></div>
+      <div class="fade-in"><h3 class="text-xl font-semibold mb-2">2. Plug into your data</h3><p class="text-gray-600">We connect to your APIs, Excel, or databases.</p></div>
+      <div class="fade-in"><h3 class="text-xl font-semibold mb-2">3. Get accurate invoices</h3><p class="text-gray-600">On time. Every time.</p></div>
+    </div>
+  </section>
 
+  <!-- CTA Section -->
+  <section class="py-20 bg-violet-600 text-white text-center">
+    <h2 class="text-4xl font-bold mb-4 fade-in">Ready to Simplify Your Billing?</h2>
+    <p class="mb-6 fade-in">Book your free demo and discover how much time and money you can save.</p>
+    <a href="#contact" class="bg-white text-violet-600 px-6 py-3 rounded-full hover:scale-105 transition fade-in btn-animated">Get Started</a>
+  </section>
+
+  <!-- Floating Action Bar -->
+  <div id="actionBar" class="w-[50%] mx-auto bg-white shadow-lg rounded-full flex justify-center space-x-4 py-2 px-6">
+    <button class="bg-violet-600 text-white px-4 py-2 rounded-full hover:bg-violet-700 transition btn-animated">Request Pricing</button>
+    <button class="bg-violet-600 text-white px-4 py-2 rounded-full hover:bg-violet-700 transition btn-animated">Book a Demo</button>
+    <button class="bg-violet-600 text-white px-4 py-2 rounded-full hover:bg-violet-700 transition btn-animated">Take a Tour</button>
+  </div>
+
+  <!-- Scroll Behavior Script -->
   <script>
     const actionBar = document.getElementById("actionBar");
     const mainNavbar = document.getElementById("mainNavbar");
@@ -92,6 +120,5 @@
       });
     });
   </script>
-
 </body>
 </html>
