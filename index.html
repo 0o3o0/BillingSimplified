@@ -27,7 +27,7 @@
     <div class="space-x-6">
       <a href="#product" class="hover:text-violet-600">Product</a>
       <a href="#solutions" class="hover:text-violet-600">Solutions</a>
-      <a href="#contact" class="open-lead-form bg-violet-600 text-white px-4 py-2 rounded-full hover:bg-violet-700 transition">Book a Demo</a>
+      <a href="#contact" class="bg-violet-600 text-white px-4 py-2 rounded-full hover:bg-violet-700 transition">Book a Demo</a>
     </div>
   </nav>
 
@@ -37,7 +37,7 @@
   <section id="product" class="min-h-screen flex flex-col items-center justify-center text-center px-6 py-12">
     <h1 class="text-5xl md:text-7xl font-extrabold mb-4 fade-in">Automate Usage-Based Billing</h1>
     <p class="text-xl md:text-2xl text-gray-600 mb-6 fade-in">No spreadsheets. No human errors. Just results.</p>
-    <a href="#contact" class="open-lead-form bg-violet-600 text-white px-6 py-3 rounded-full hover:scale-105 transition fade-in btn-animated">Get a Demo</a>
+    <a href="#contact" class="bg-violet-600 text-white px-6 py-3 rounded-full hover:scale-105 transition fade-in btn-animated">Get a Demo</a>
   </section>
 
   <!-- Why Us Section -->
@@ -140,52 +140,8 @@
         }
       });
     });
-      const modal = document.getElementById("leadModal");
-      const closeModalBtn = document.getElementById("closeModal");
-      const demoButtons = document.querySelectorAll(".open-lead-form");
-    
-      demoButtons.forEach(btn => {
-        btn.addEventListener("click", (e) => {
-          e.preventDefault();
-          modal.classList.remove("hidden");
-          modal.classList.add("flex");
-        });
-      });
-    
-      closeModalBtn.addEventListener("click", () => {
-        modal.classList.add("hidden");
-      });
-    
-      document.getElementById("leadForm").addEventListener("submit", async (e) => {
-        e.preventDefault();
-        const form = e.target;
-        const data = {
-          name: form.name.value,
-          email: form.email.value,
-          phone: form.phone.value
-        };
-        await fetch("https://script.google.com/macros/s/AKfycbxz1hRqqq5x7Tr5Qf1mnHiRUvIjF9_XMR0-GpqjXLZ1m2N_OHpAgIvEVMvZ89-Y0jBufQ/exec", {
-          method: "POST",
-          body: JSON.stringify(data),
-          headers: { "Content-Type": "application/json" }
-        });
-        form.reset();
-        modal.classList.add("hidden");
-        alert("Thank you! We received your request.");
-      });
   </script>
-<!-- Modal Form -->
-<div id="leadModal" class="fixed inset-0 bg-black bg-opacity-50 hidden justify-center items-center z-50">
-  <div class="bg-white p-6 rounded shadow max-w-md w-full text-center">
-    <h2 class="text-2xl font-bold mb-4">Book a Demo</h2>
-    <form id="leadForm">
-      <input type="text" name="name" placeholder="Full Name" required class="border p-2 w-full mb-2 rounded" />
-      <input type="email" name="email" placeholder="Email" required class="border p-2 w-full mb-2 rounded" />
-      <input type="text" name="phone" placeholder="Phone (optional)" class="border p-2 w-full mb-2 rounded" />
-      <button type="submit" class="bg-violet-600 text-white px-4 py-2 rounded hover:bg-violet-700 w-full">Submit</button>
-    </form>
-    <button id="closeModal" class="mt-4 text-gray-600 hover:text-black">Cancel</button>
-  </div>
-</div>
 </body>
 </html>
+
+
