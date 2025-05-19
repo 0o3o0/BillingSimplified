@@ -110,7 +110,12 @@
       sections.forEach(section => {
         const sectionTop = section.offsetTop;
         const sectionHeight = section.offsetHeight;
-        if (scrollY + window.innerHeight / 2 > sectionTop && scrollY + window.innerHeight / 2 < sectionTop + sectionHeight) {
+        const sectionBottom = sectionTop + sectionHeight;
+        const viewMiddle = scrollY + window.innerHeight / 2;
+        const viewBottom = scrollY + window.innerHeight;
+
+        if ((viewMiddle > sectionTop && viewMiddle < sectionBottom) ||
+            (viewBottom > sectionTop && viewBottom <= sectionBottom + window.innerHeight / 4)) {
           section.classList.add("active-section");
           section.classList.remove("inactive-section");
         } else {
