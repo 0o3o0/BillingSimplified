@@ -33,6 +33,17 @@
     #mainNavbar {
       transition: top 0.3s ease-in-out;
     }
+    section {
+      transition: filter 0.5s ease, transform 0.5s ease;
+    }
+    .inactive-section {
+      filter: blur(2px) brightness(0.9);
+      transform: scale(0.98);
+    }
+    .active-section {
+      filter: none;
+      transform: scale(1);
+    }
   </style>
 </head>
 <body class="text-slate-800">
@@ -92,6 +103,11 @@
     const actionBar = document.getElementById("actionBar");
     const mainNavbar = document.getElementById("mainNavbar");
     const productSection = document.getElementById("product");
+    const sections = document.querySelectorAll("section");
+
+    function getSectionMiddle(section) {
+      return section.offsetTop + section.offsetHeight / 2;
+    }
 
     function getSectionBottom(section) {
       return section.offsetTop + section.offsetHeight;
@@ -99,6 +115,7 @@
 
     window.addEventListener("scroll", () => {
       const scrollY = window.scrollY;
+      const productMiddle = getSectionMiddle(productSection);
       const productBottom = getSectionBottom(productSection);
 
       // Show floating action bar after product section fully scrolled past
@@ -108,12 +125,25 @@
         actionBar.style.top = "-100px";
       }
 
-      // Hide main navbar on scroll down
-      if (scrollY > 0) {
+      // Hide main navbar after half product section
+      if (scrollY > productMiddle) {
         mainNavbar.style.top = "-100px";
       } else {
         mainNavbar.style.top = "0";
       }
+
+      // Section focus effect
+      sections.forEach(section => {
+        const sectionTop = section.offsetTop;
+        const sectionHeight = section.offsetHeight;
+        if (scrollY + window.innerHeight / 2 > sectionTop && scrollY + window.innerHeight / 2 < sectionTop + sectionHeight) {
+          section.classList.add("active-section");
+          section.classList.remove("inactive-section");
+        } else {
+          section.classList.add("inactive-section");
+          section.classList.remove("active-section");
+        }
+      });
     });
   </script>
 </body>
