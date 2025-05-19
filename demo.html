@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Book a Demo - Billing Simplified</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body { font-family: 'Inter', sans-serif; background-color: #f9f9ff; color: #1e293b; }
+  </style>
+</head>
+<body class="flex flex-col items-center justify-center min-h-screen text-center px-4">
+
+  <h1 class="text-5xl font-extrabold text-violet-700 mb-4">Ready to See Billing Simplified in Action?</h1>
+  <p class="text-lg text-gray-600 mb-8">Fill in your details and we'll contact you to schedule a personal demo.</p>
+
+  <form id="leadForm" class="bg-white p-6 rounded shadow-md max-w-md w-full space-y-4">
+    <input type="text" name="name" placeholder="Full Name" required class="border p-2 w-full rounded" />
+    <input type="email" name="email" placeholder="Email" required class="border p-2 w-full rounded" />
+    <input type="text" name="phone" placeholder="Phone (optional)" class="border p-2 w-full rounded" />
+    <button type="submit" class="bg-violet-600 text-white px-4 py-2 rounded hover:bg-violet-700 w-full">Submit</button>
+  </form>
+
+  <a href="index.html" class="mt-6 text-violet-600 hover:underline">Back to Home</a>
+
+  <script>
+    document.getElementById("leadForm").addEventListener("submit", async function(e) {
+      e.preventDefault();
+      const form = e.target;
+      const data = {
+        name: form.name.value,
+        email: form.email.value,
+        phone: form.phone.value
+      };
+      await fetch("https://script.google.com/macros/s/AKfycbxz1hRqqq5x7Tr5Qf1mnHiRUvIjF9_XMR0-GpqjXLZ1m2N_OHpAgIvEVMvZ89-Y0jBufQ/exec", {
+        method: "POST",
+        body: JSON.stringify(data),
+        headers: { "Content-Type": "application/json" }
+      });
+      form.reset();
+      alert("Thank you! We received your request.");
+    });
+  </script>
+</body>
+</html>
