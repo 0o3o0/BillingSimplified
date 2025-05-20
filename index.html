@@ -33,9 +33,9 @@
 
   <!-- Hero Section -->
   <section id="product" class="relative min-h-screen flex flex-col items-center justify-center text-center px-6 py-12 bg-gradient-to-t from-violet-500 to-transparent overflow-hidden">
-    <!-- Metrics SVG above background -->
-    <img src="https://raw.githubusercontent.com/0o3o0/BillingSimplified/fc3232aa03c25bc9aa2dc93100f2b22ee51a3afa/undraw_metrics_5v8d.svg"
-         alt="Metrics Illustration"
+    <!-- Data Analysis SVG above background (swapped) -->
+    <img src="https://raw.githubusercontent.com/0o3o0/BillingSimplified/fc3232aa03c25bc9aa2dc93100f2b22ee51a3afa/undraw_data-analysis_b7cp.svg"
+         alt="Data Analysis Illustration"
          class="absolute bottom-10 left-10 w-72 opacity-30 z-10">
     <!-- Rectangle Decoration -->
     <div class="absolute bottom-0 right-0 transform translate-x-1/2 translate-y-1/2 z-10">
@@ -66,9 +66,9 @@
 
   <!-- Key Metrics Section -->
   <section class="py-20 bg-gradient-to-r from-violet-200 to-violet-100 text-center overflow-hidden">
-    <!-- Data Analysis SVG above background -->
-    <img src="https://raw.githubusercontent.com/0o3o0/BillingSimplified/fc3232aa03c25bc9aa2dc93100f2b22ee51a3afa/undraw_data-analysis_b7cp.svg"
-         alt="Data Analysis Illustration"
+    <!-- Metrics SVG above background (was first now swapped) -->
+    <img src="https://raw.githubusercontent.com/0o3o0/BillingSimplified/fc3232aa03c25bc9aa2dc93100f2b22ee51a3afa/undraw_metrics_5v8d.svg"
+         alt="Metrics Illustration"
          class="absolute top-10 right-10 w-72 h-72 opacity-20 z-10">
     <h2 class="text-4xl font-bold mb-6 text-violet-900 relative z-20">Key Metrics</h2>
     <div class="grid md:grid-cols-3 gap-8 text-3xl font-extrabold text-violet-700 relative z-20">
@@ -151,24 +151,14 @@
     window.addEventListener("scroll", () => {
       const scrollY = window.scrollY;
       const productMiddle = getSectionMiddle(productSection);
-      if (scrollY > productMiddle) {
-        actionBar.style.top = "20px";
-      } else {
-        actionBar.style.top = "-100px";
-      }
-      if (scrollY > productMiddle) {
-        mainNavbar.style.top = "-100px";
-      } else {
-        mainNavbar.style.top = "0";
-      }
+      actionBar.style.top = scrollY > productMiddle ? "20px" : "-100px";
+      mainNavbar.style.top = scrollY > productMiddle ? "-100px" : "0";
       sections.forEach(section => {
         const sectionTop = section.offsetTop;
-        const sectionHeight = section.offsetHeight;
-        const sectionBottom = sectionTop + sectionHeight;
+        const sectionBottom = sectionTop + section.offsetHeight;
         const viewMiddle = scrollY + window.innerHeight / 2;
         const viewBottom = scrollY + window.innerHeight;
-        if ((viewMiddle > sectionTop && viewMiddle < sectionBottom) ||
-            (viewBottom > sectionTop && viewBottom <= sectionBottom + window.innerHeight / 4)) {
+        if ((viewMiddle > sectionTop && viewMiddle < sectionBottom) || (viewBottom > sectionTop && viewBottom <= sectionBottom + window.innerHeight / 4)) {
           section.classList.add("active-section");
           section.classList.remove("inactive-section");
         } else {
