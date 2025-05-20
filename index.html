@@ -33,20 +33,18 @@
   <div class="h-16"></div>
 
   <!-- Hero Section -->
-  <section id="product" class="min-h-screen flex flex-col md:flex-row items-center justify-center text-center px-6 py-12 bg-gradient-to-b from-white to-violet-50">
-    <!-- Video Animation -->
-    <div class="w-full md:w-1/2 flex justify-center mb-8 md:mb-0">
-      <video autoplay muted loop playsinline class="rounded-xl shadow-lg max-w-sm w-full">
-        <source src="https://raw.githubusercontent.com/0o3o0/BillingSimplified/main/images/hero-animation.mp4?raw=true" type="video/mp4">
-      </video>
-    </div>
-    <!-- Text Content -->
-    <div class="w-full md:w-1/2 flex flex-col items-center justify-center space-y-6">
-      <h1 class="text-5xl md:text-7xl font-extrabold text-violet-800">Automate Usage-Based Billing</h1>
-      <p class="text-xl md:text-2xl text-gray-600">No spreadsheets. No human errors. Just results.</p>
-      <a href="#contact" class="bg-violet-600 text-white px-6 py-3 rounded-full hover:scale-105 transition btn-animated inline-block">Get a Demo</a>
-    </div>
-  </section>
+<section id="product" class="relative min-h-screen flex flex-col items-center justify-center text-center px-6 py-12 bg-gradient-to-b from-white to-violet-50 overflow-hidden">
+  <!-- Video Background Layer -->
+  <video autoplay muted loop playsinline class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-3/4 opacity-30 pointer-events-none">
+    <source src="https://raw.githubusercontent.com/0o3o0/BillingSimplified/main/images/hero-animation.mp4?raw=true" type="video/mp4">
+  </video>
+  <!-- Content Layer -->
+  <div class="relative z-10 max-w-3xl space-y-6">
+    <h1 class="text-5xl md:text-7xl font-extrabold text-violet-800">Automate Usage-Based Billing</h1>
+    <p class="text-xl md:text-2xl text-gray-600">No spreadsheets. No human errors. Just results.</p>
+    <a href="#contact" class="bg-violet-600 text-white px-6 py-3 rounded-full hover:scale-105 transition btn-animated inline-block">Get a Demo</a>
+  </div>
+</section>
 
   <!-- Why Us Section -->
   <section class="py-20 px-6 text-center max-w-5xl mx-auto">
