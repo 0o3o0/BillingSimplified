@@ -33,10 +33,10 @@
 
   <!-- Hero Section -->
   <section id="product" class="relative min-h-screen flex flex-col items-center justify-center text-center px-6 py-12 bg-gradient-to-t from-violet-500 to-transparent overflow-hidden">
-    <!-- Metrics SVG above background (swapped) -->
+    <!-- Metrics SVG above background, lifted up and forward -->
     <img src="https://raw.githubusercontent.com/0o3o0/BillingSimplified/fc3232aa03c25bc9aa2dc93100f2b22ee51a3afa/undraw_metrics_5v8d.svg"
          alt="Metrics Illustration"
-         class="absolute bottom-10 left-10 w-72 opacity-30 z-[15]">
+         class="absolute top-[-10px] left-10 w-72 opacity-30 z-[50]">
     <!-- Content Overlay -->
     <div class="relative z-20 max-w-full space-y-6">
       <h1 class="whitespace-nowrap text-5xl md:text-7xl font-extrabold text-white">Automate Usage-Based Billing</h1>
@@ -62,7 +62,7 @@
 
   <!-- Key Metrics Section -->
   <section class="py-20 bg-gradient-to-r from-violet-200 to-violet-100 text-center overflow-hidden">
-    <!-- Data Analysis SVG above background (swapped) -->
+    <!-- Data Analysis SVG above background -->
     <img src="https://raw.githubusercontent.com/0o3o0/BillingSimplified/fc3232aa03c25bc9aa2dc93100f2b22ee51a3afa/undraw_data-analysis_b7cp.svg"
          alt="Data Analysis Illustration"
          class="absolute top-10 right-10 w-72 h-72 opacity-20 z-[15]">
@@ -129,32 +129,47 @@
   </section>
 
   <!-- Floating Action Bar -->
-  <div id="actionBar" class="w-3/5 mx-auto bg-white shadow-lg rounded-full flex justify-center space-x-4 py-2 px-6 z-50">
+  <div id="actionBar" class="w-[50%] mx-auto bg-white shadow-lg rounded-full flex justify-center space-x-4 py-2 px-6">
     <button class="bg-violet-600 text-white px-4 py-2 rounded-full hover:bg-violet-700 transition btn-animated">Request Pricing</button>
     <button class="bg-violet-600 text-white px-4 py-2 rounded-full hover:bg-violet-700 transition btn-animated">Book a Demo</button>
     <button class="bg-violet-600 text-white px-4 py-2 rounded-full hover:bg-violet-700 transition btn-animated">Take a Tour</button>
   </div>
 
-  <!-- Scroll Behavior Script -->
   <script>
     const actionBar = document.getElementById("actionBar");
     const mainNavbar = document.getElementById("mainNavbar");
     const productSection = document.getElementById("product");
     const sections = document.querySelectorAll("section");
+
     function getSectionMiddle(section) {
       return section.offsetTop + section.offsetHeight / 2;
     }
+
     window.addEventListener("scroll", () => {
       const scrollY = window.scrollY;
       const productMiddle = getSectionMiddle(productSection);
-      actionBar.style.top = scrollY > productMiddle ? "20px" : "-100px";
-      mainNavbar.style.top = scrollY > productMiddle ? "-100px" : "0";
+
+      if (scrollY > productMiddle) {
+        actionBar.style.top = "20px";
+      } else {
+        actionBar.style.top = "-100px";
+      }
+
+      if (scrollY > productMiddle) {
+        mainNavbar.style.top = "-100px";
+      } else {
+        mainNavbar.style.top = "0";
+      }
+
       sections.forEach(section => {
         const sectionTop = section.offsetTop;
-        const sectionBottom = sectionTop + section.offsetHeight;
+        const sectionHeight = section.offsetHeight;
+        const sectionBottom = sectionTop + sectionHeight;
         const viewMiddle = scrollY + window.innerHeight / 2;
         const viewBottom = scrollY + window.innerHeight;
-        if ((viewMiddle > sectionTop && viewMiddle < sectionBottom) || (viewBottom > sectionTop && viewBottom <= sectionBottom + window.innerHeight / 4)) {
+
+        if ((viewMiddle > sectionTop && viewMiddle < sectionBottom) ||
+            (viewBottom > sectionTop && viewBottom <= sectionBottom + window.innerHeight / 4)) {
           section.classList.add("active-section");
           section.classList.remove("inactive-section");
         } else {
@@ -164,5 +179,6 @@
       });
     });
   </script>
+
 </body>
 </html>
