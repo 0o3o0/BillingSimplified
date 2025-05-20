@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Billing Simplified</title>
+  <title>Billing Simplified</n<title>
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
     html { scroll-behavior: smooth; }
@@ -36,7 +36,7 @@
     <!-- Metrics SVG above background, lifted up and forward -->
     <img src="https://raw.githubusercontent.com/0o3o0/BillingSimplified/fc3232aa03c25bc9aa2dc93100f2b22ee51a3afa/undraw_metrics_5v8d.svg"
          alt="Metrics Illustration"
-         class="absolute top-[-10px] left-10 w-72 opacity-30 z-[50]">
+         class="absolute top-[65px] left-10 w-72 opacity-50 z-[60]">
     <!-- Content Overlay -->
     <div class="relative z-20 max-w-full space-y-6">
       <h1 class="whitespace-nowrap text-5xl md:text-7xl font-extrabold text-white">Automate Usage-Based Billing</h1>
@@ -50,7 +50,7 @@
     <!-- Online Banking SVG above background -->
     <img src="https://raw.githubusercontent.com/0o3o0/BillingSimplified/fc3232aa03c25bc9aa2dc93100f2b22ee51a3afa/undraw_online-banking_l9sn.svg"
          alt="Online Banking Illustration"
-         class="absolute top-10 left-1/2 transform -translate-x-1/2 w-48 h-48 opacity-30 z-[15]">
+         class="absolute top-10 left-1/2 transform -translate-x-1/2 w-48 h-48 opacity-50 z-[60]">
     <h2 class="text-4xl font-bold mb-10 text-violet-800 relative z-20">Why Choose Us</h2>
     <div class="grid md:grid-cols-4 gap-8 relative z-20">
       <div><h3 class="font-semibold text-violet-700">Quick Start</h3><p class="text-violet-600">Start billing in days, not months.</p></div>
@@ -62,10 +62,6 @@
 
   <!-- Key Metrics Section -->
   <section class="py-20 bg-gradient-to-r from-violet-200 to-violet-100 text-center overflow-hidden">
-    <!-- Data Analysis SVG above background -->
-    <img src="https://raw.githubusercontent.com/0o3o0/BillingSimplified/fc3232aa03c25bc9aa2dc93100f2b22ee51a3afa/undraw_data-analysis_b7cp.svg"
-         alt="Data Analysis Illustration"
-         class="absolute top-10 right-10 w-72 h-72 opacity-20 z-[15]">
     <h2 class="text-4xl font-bold mb-6 text-violet-900 relative z-20">Key Metrics</h2>
     <div class="grid md:grid-cols-3 gap-8 text-3xl font-extrabold text-violet-700 relative z-20">
       <div>500K+ Invoices Sent</div>
@@ -121,10 +117,7 @@
   <section id="contact" class="py-20 text-center bg-gray-50">
     <h2 class="text-4xl font-bold mb-6 text-violet-800">Get in Touch</h2>
     <form class="max-w-xl mx-auto bg-white p-6 rounded shadow space-y-4 relative z-20">
-      <input type="text" placeholder="Full Name" required class="w-full p-3 border rounded" />
-      <input type="email" placeholder="Email" required class="w-full p-3 border rounded" />
-      <input type="tel" placeholder="Phone" class="w-full p-3 border rounded" />
-      <button class="bg-violet-600 text-white px-6 py-3 rounded-full hover:bg-violet-700 transition w-full">Submit</button>
+      <input type
     </form>
   </section>
 
@@ -149,33 +142,16 @@
       const scrollY = window.scrollY;
       const productMiddle = getSectionMiddle(productSection);
 
-      if (scrollY > productMiddle) {
-        actionBar.style.top = "20px";
-      } else {
-        actionBar.style.top = "-100px";
-      }
-
-      if (scrollY > productMiddle) {
-        mainNavbar.style.top = "-100px";
-      } else {
-        mainNavbar.style.top = "0";
-      }
+      actionBar.style.top = scrollY > productMiddle ? "20px" : "-100px";
+      mainNavbar.style.top = scrollY > productMiddle ? "-100px" : "0";
 
       sections.forEach(section => {
-        const sectionTop = section.offsetTop;
-        const sectionHeight = section.offsetHeight;
-        const sectionBottom = sectionTop + sectionHeight;
-        const viewMiddle = scrollY + window.innerHeight / 2;
-        const viewBottom = scrollY + window.innerHeight;
-
-        if ((viewMiddle > sectionTop && viewMiddle < sectionBottom) ||
-            (viewBottom > sectionTop && viewBottom <= sectionBottom + window.innerHeight / 4)) {
-          section.classList.add("active-section");
-          section.classList.remove("inactive-section");
-        } else {
-          section.classList.add("inactive-section");
-          section.classList.remove("active-section");
-        }
+        const top = section.offsetTop;
+        const height = section.offsetHeight;
+        const bottom = top + height;
+        const viewMid = scrollY + window.innerHeight / 2;
+        const viewBot = scrollY + window.innerHeight;
+        section.classList.toggle("active-section", (viewMid>top && viewMid<bottom) || (viewBot>top && viewBot<=bottom+window.innerHeight/4));
       });
     });
   </script>
