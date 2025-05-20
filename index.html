@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Billing Simplified</title>
+  <title>Billing Simplified</n>
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
     html { scroll-behavior: smooth; }
@@ -38,8 +38,8 @@
     <div class="absolute top-0 left-0 w-full h-full pointer-events-none opacity-40">
       <!-- Animated SVG -->
       <svg class="animated w-full h-full" id="freepik_stories-finance" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 500" version="1.1">
-        <style>svg#freepik_stories-finance:not(.animated) .animable {opacity: 0;}svg#freepik_stories-finance.animated #freepik--Coins--inject-1--inject-5 {animation: 3s Infinite linear floating;animation-delay: 0s;}svg#freepik_stories-finance.animated #freepik--Bills--inject-1--inject-5 {animation: 3s Infinite linear floating;animation-delay: 0s;}svg#freepik_stories-finance.animated #freepik--bars-chart--inject-1--inject-5 {animation: 3s Infinite linear floating;animation-delay: 0s;}svg#freepik_stories-finance.animated #freepik--Dollar--inject-1--inject-5 {animation: 3s Infinite linear floating;animation-delay: 0s;}@keyframes floating {0% {opacity: 1; transform: translateY(0px);}50% {transform: translateY(-10px);}100% {opacity: 1; transform: translateY(0px);}}</style>
-        <!-- SVG content omitted for brevity -->
+        <style>svg#freepik_stories-finance:not(.animated) .animable {opacity: 0;} @keyframes floating {0% {opacity:1;transform:translateY(0);}50% {transform:translateY(-10px);}100% {opacity:1;transform:translateY(0);} } .animable {animation:3s infinite linear floating;}</style>
+        <!-- נא להדביק כאן את תוכן ה-SVG המלא שלך -->
       </svg>
     </div>
     <!-- Content Overlay -->
@@ -75,7 +75,7 @@
   <section id="pricing" class="py-20 text-center bg-white">
     <h2 class="text-4xl font-bold mb-10 text-violet-800">Pricing Plans</h2>
     <div class="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto px-6">
-      <!-- Plans -->
+      <!-- הדבק כאן את הכרטיסים של התוכניות -->
     </div>
   </section>
 
@@ -83,7 +83,7 @@
   <section id="preview" class="py-20 bg-gradient-to-tl from-violet-50 via-white to-violet-100 text-center">
     <h2 class="text-4xl font-bold mb-10 text-violet-800">Product Preview</h2>
     <div class="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto px-6">
-      <!-- Previews -->
+      <!-- הדבק כאן את התמונות של ההדגמות -->
     </div>
   </section>
 
@@ -91,7 +91,7 @@
   <section id="contact" class="py-20 text-center bg-gradient-to-br from-violet-200 to-violet-100">
     <h2 class="text-4xl font-bold mb-6 text-violet-900">Get in Touch</h2>
     <form class="max-w-xl mx-auto bg-white p-6 rounded-lg shadow-lg space-y-4">
-      <!-- Form Fields -->
+      <!-- הדבק כאן את שדות הטופס -->
     </form>
   </section>
 
@@ -121,7 +121,8 @@
       mainNavbar.style.top = (scrollY > productMiddle) ? "-100px" : "0";
 
       sections.forEach(section => {
-        const { offsetTop: top, offsetHeight: height } = section;
+        const top = section.offsetTop;
+        const height = section.offsetHeight;
         const bottom = top + height;
         const middleView = scrollY + window.innerHeight / 2;
         const bottomView = scrollY + window.innerHeight;
