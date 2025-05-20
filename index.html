@@ -33,18 +33,20 @@
   <div class="h-16"></div>
 
   <!-- Hero Section -->
-<section id="product" class="relative min-h-screen flex flex-col items-center justify-center text-center px-6 py-12 bg-gradient-to-b from-white to-violet-50 overflow-hidden">
-  <!-- Video Background Layer -->
-  <video autoplay muted loop playsinline class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-3/4 opacity-30 pointer-events-none">
-    <source src="https://raw.githubusercontent.com/0o3o0/BillingSimplified/main/images/hero-animation.mp4?raw=true" type="video/mp4">
-  </video>
-  <!-- Content Layer -->
-  <div class="relative z-10 max-w-3xl space-y-6">
-    <h1 class="text-5xl md:text-7xl font-extrabold text-violet-800">Automate Usage-Based Billing</h1>
-    <p class="text-xl md:text-2xl text-gray-600">No spreadsheets. No human errors. Just results.</p>
-    <a href="#contact" class="bg-violet-600 text-white px-6 py-3 rounded-full hover:scale-105 transition btn-animated inline-block">Get a Demo</a>
-  </div>
-</section>
+  <section id="product" class="min-h-screen flex flex-row items-center justify-center text-center px-6 py-12 bg-gradient-to-b from-white to-violet-50">
+    <!-- Video Animation Left -->
+    <div class="w-1/2 pr-6">
+      <video autoplay muted loop playsinline class="rounded-xl shadow-lg w-full h-auto">
+        <source src="https://raw.githubusercontent.com/0o3o0/BillingSimplified/images/hero-animation.mp4" type="video/mp4">
+      </video>
+    </div>
+    <!-- Text Content Right -->
+    <div class="w-1/2 pl-6 space-y-6">
+      <h1 class="text-5xl md:text-7xl font-extrabold text-violet-800">Automate Usage-Based Billing</h1>
+      <p class="text-xl md:text-2xl text-gray-600">No spreadsheets. No human errors. Just results.</p>
+      <a href="#contact" class="bg-violet-600 text-white px-6 py-3 rounded-full hover:scale-105 transition btn-animated inline-block">Get a Demo</a>
+    </div>
+  </section>
 
   <!-- Why Us Section -->
   <section class="py-20 px-6 text-center max-w-5xl mx-auto">
@@ -71,30 +73,27 @@
   <section id="pricing" class="py-20 text-center bg-white">
     <h2 class="text-4xl font-bold mb-10 text-violet-600">Pricing Plans</h2>
     <div class="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto px-6">
-      <!-- Starter Plan -->
-      <div class="border rounded-lg p-6 shadow hover:shadow-lg transition">
+      <div class="border rounded-lg p-6 shadow hover:shadow-lg transition text-left">
         <h3 class="text-xl font-semibold mb-2">Starter Plan</h3>
-        <ul class="text-gray-600 space-y-2 text-left">
+        <ul class="text-gray-600 space-y-2">
           <li>Scheduled report integration</li>
           <li>Up to 300 clients</li>
           <li>3 months free</li>
           <li>Dedicated onboarding</li>
         </ul>
       </div>
-      <!-- Core Plan -->
-      <div class="border rounded-lg p-6 shadow-lg bg-violet-50">
+      <div class="border rounded-lg p-6 shadow-lg bg-violet-50 text-left">
         <h3 class="text-xl font-semibold mb-2">Core Plan</h3>
-        <ul class="text-gray-600 space-y-2 text-left">
+        <ul class="text-gray-600 space-y-2">
           <li>Integration via API or Database</li>
           <li>Up to 300 clients</li>
           <li>1 month free</li>
           <li>Dedicated onboarding</li>
         </ul>
       </div>
-      <!-- Growth Plan -->
-      <div class="border rounded-lg p-6 shadow hover:shadow-lg transition">
+      <div class="border rounded-lg p-6 shadow hover:shadow-lg transition text-left">
         <h3 class="text-xl font-semibold mb-2">Growth Plan</h3>
-        <ul class="text-gray-600 space-y-2 text-left">
+        <ul class="text-gray-600 space-y-2">
           <li>Any custom integration</li>
           <li>Unlimited clients</li>
           <li>1 month free</li>
