@@ -32,12 +32,17 @@
 
   <div class="h-16"></div>
 
-  <!-- Hero Section -->
-  <section id="product" class="min-h-screen flex flex-col items-center justify-center text-center px-6 py-12 bg-gradient-to-b from-violet-100 to-violet-200">
-    <div class="max-w-full space-y-6">
-      <h1 class="whitespace-nowrap text-5xl md:text-7xl font-extrabold text-violet-900">Automate Usage-Based Billing</h1>
-      <p class="text-xl md:text-2xl text-violet-700">No spreadsheets. No human errors. Just results.</p>
-      <a href="#contact" class="bg-violet-700 text-white px-6 py-3 rounded-full hover:scale-105 transition btn-animated inline-block">Get a Demo</a>
+  <!-- Hero Section with Gradient Fade and Video Animation -->
+  <section id="product" class="relative min-h-screen flex flex-col items-center justify-center text-center px-6 py-12 bg-gradient-to-b from-violet-500 to-transparent">
+    <!-- Background Video -->
+    <video autoplay muted loop class="absolute top-0 left-0 w-full h-full object-cover opacity-40 pointer-events-none">
+      <source src="path/to/your-animation.mp4" type="video/mp4">
+    </video>
+    <!-- Content Overlay -->
+    <div class="relative z-10 max-w-full space-y-6">
+      <h1 class="whitespace-nowrap text-5xl md:text-7xl font-extrabold text-white">Automate Usage-Based Billing</h1>
+      <p class="text-xl md:text-2xl text-white/80">No spreadsheets. No human errors. Just results.</p>
+      <a href="#contact" class="bg-white text-violet-700 px-6 py-3 rounded-full hover:scale-105 transition btn-animated inline-block font-semibold">Get a Demo</a>
     </div>
   </section>
 
@@ -120,7 +125,7 @@
   <div id="actionBar" class="w-[50%] mx-auto bg-gradient-to-r from-violet-400 to-violet-600 shadow-xl rounded-full flex justify-center space-x-4 py-2 px-6">
     <button class="bg-white text-violet-700 px-4 py-2 rounded-full hover:bg-violet-50 transition btn-animated font-medium">Request Pricing</button>
     <button class="bg-white text-violet-700 px-4 py-2 rounded-full hover:bg-violet-50 transition btn-animated font-medium">Book a Demo</button>
-    <button class="bg-white text-violet-700 px-4 py-2 rounded-full hover:bg-violet-50 transition btn-animated font-medium">Take a Tour</button>
+    <button class="bg-white text-violet-700 px-4 py-2 rounded-full hover:bg-вiolet-50 transition btn-animated font-medium">Take a Tour</button>
   </div>
 
   <!-- Scroll Behavior Script -->
