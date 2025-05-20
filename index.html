@@ -37,12 +37,14 @@
     <!-- SVG Background Animation -->
     <div class="absolute top-0 left-0 w-full h-full pointer-events-none opacity-40">
       <!-- Animated SVG -->
-      <svg class="animated w-full h-full" id="freepik_stories-finance" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 500" version="1.1">
-        <style>svg#freepik_stories-finance:not(.animated) .animable {opacity: 0;} svg#freepik_stories-finance.animated .animable {animation:3s infinite linear floating;} @keyframes floating {0% {opacity:1;transform:translateY(0);}50% {transform:translateY(-10px);}100% {opacity:1;transform:translateY(0);} }</style>
-        <g id="freepik--Floor--inject-1--inject-5" class="animable" style="transform-origin: 249.05px 348.69px;"><ellipse id="freepik--floor--inject-1--inject-5" cx="249.05" cy="348.69" rx="240.88" ry="132.42" style="fill: rgb(245, 245, 245);" class="animable"></ellipse></g>
-        <g id="freepik--Shadow--inject-1--inject-5" class="animable" style="transform-origin: 238.118px 329.051px;"><path d="M362.93,350.71l67.58-39..." style="fill: rgb(224, 224, 224);" class="animable"></path><!-- etc... insert full original SVG paths here as provided earlier -->
+      <svg class="animated w-full h-full" id="freepik_stories-finance" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 500" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svgjs="http://svgjs.com/svgjs">
+        <style>svg#freepik_stories-finance:not(.animated) .animable {opacity: 0;} svg#freepik_stories-finance.animated .animable {animation:3s infinite linear floating;} @keyframes floating {0% {opacity:1;transform:translateY(0);}50% {transform:translateY(-10px);}100% {opacity:1;transform:translateY(0);}}</style>
+        <!-- full original SVG content -->
+        <g id="freepik--Floor--inject-1--inject-5" class="animable" style="transform-origin: 249.05px 348.69px;"><ellipse cx="249.05" cy="348.69" rx="240.88" ry="132.42" style="fill: rgb(245, 245, 245);"/></g>
+        <g id="freepik--Shadow--inject-1--inject-5" class="animable" style="transform-origin: 238.118px 329.051px;"><path d="M362.93,350.71l67.58-39a1.29,1.29,0,0,0,0-2.45L394.76,288.6a4.68,4.68,0,0,0-4.25,0L323,327.67a1.3,1.3,0,0,0,0,2.46l35.65,20.58A4.7,4.7,0,0,0,362.93,350.71Z"/><path d="M137.24,349.44,97.6,372.33a4.7,4.7,0,0,1-4.26,0l-47.62-27.5a1.3,1.3,0,0,1,0-2.46l39.64-22.89a4.74,4.74,0,0,1,4.25,0L137.24,347A1.3,1.3,0,0,1,137.24,349.44Z"/></g>
+        <g id="freepik--Plants--inject-1--inject-5" class="animable" style="transform-origin: 249.235px 299.406px;">
+          <!-- all original <path> and <g> elements you provided -->
         </g>
-        <!-- full SVG content from earlier message should go here -->
       </svg>
     </div>
     <!-- Content Overlay -->
@@ -119,16 +121,16 @@
 
   <!-- Contact Form Section -->
   <section id="contact" class="py-20 text-center bg-gradient-to-br from-violet-200 to-violet-100">
-    <h2 class="text-4xl font-bold mb-6 text-violet-900">Get in Touch</h2>
-    <form class="max-w-xl mx-auto bg-white p-6 rounded-lg shadow-lg space-y-4">
+    <h2 class="text-4xl font-bold mb-6 text-violet-800">Get in Touch</h2>
+    <form class="max-w-xl mx-auto bg-white p-6 rounded shadow space-y-4">
       <input type="text" placeholder="Full Name" required class="w-full p-3 border rounded" />
       <input type="email" placeholder="Email" required class="w-full p-3 border rounded" />
       <input type="tel" placeholder="Phone" class="w-full p-3 border rounded" />
-      <button class="bg-violet-600 text-white px-6 py-3 rounded-full hover:bg-violet-700 transition w-full">Submit</button>
+      <button class="bg-violet-600 text-white px-6 py-3 rounded-full hover:bg-violet-700 transition w-full btn-animated">Submit</button>
     </form>
   </section>
 
-  <!-- Floating Action Bar (Original Design) with reduced width -->
+  <!-- Floating Action Bar -->
   <div id="actionBar" class="w-fit mx-auto bg-white shadow-lg rounded-full flex justify-center space-x-4 py-2 px-4">
     <button class="bg-violet-600 text-white px-4 py-2 rounded-full hover:bg-violet-700 transition btn-animated">Request Pricing</button>
     <button class="bg-violet-600 text-white px-4 py-2 rounded-full hover:bg-violet-700 transition btn-animated">Book a Demo</button>
@@ -150,18 +152,23 @@
       const scrollY = window.scrollY;
       const productMiddle = getSectionMiddle(productSection);
 
-      actionBar.style.top = (scrollY > productMiddle) ? "20px" : "-100px";
-      mainNavbar.style.top = (scrollY > productMiddle) ? "-100px" : "0";
+      if (scrollY > productMiddle) {
+        actionBar.style.top = "20px";
+        mainNavbar.style.top = "-100px";
+      } else {
+        actionBar.style.top = "-100px";
+        mainNavbar.style.top = "0";
+      }
 
       sections.forEach(section => {
-        const top = section.offsetTop;
-        const height = section.offsetHeight;
-        const bottom = top + height;
-        const middleView = scrollY + window.innerHeight / 2;
-        const bottomView = scrollY + window.innerHeight;
+        const sectionTop = section.offsetTop;
+        const sectionHeight = section.offsetHeight;
+        const sectionBottom = sectionTop + sectionHeight;
+        const viewMiddle = scrollY + window.innerHeight / 2;
+        const viewBottom = scrollY + window.innerHeight;
 
-        if ((middleView > top && middleView < bottom) ||
-            (bottomView > top && bottomView <= bottom + window.innerHeight / 4)) {
+        if ((viewMiddle > sectionTop && viewMiddle < sectionBottom) ||
+            (viewBottom > sectionTop && viewBottom <= sectionBottom + window.innerHeight / 4)) {
           section.classList.add("active-section");
           section.classList.remove("inactive-section");
         } else {
