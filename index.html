@@ -29,11 +29,14 @@
       <a href="#contact" class="bg-violet-600 text-white px-4 py-2 rounded-full hover:bg-violet-700 transition">Book a Demo</a>
     </div>
   </nav>
-
   <div class="h-16"></div>
 
-  <!-- Hero Section with Video Background -->
+  <!-- Hero Section -->
   <section id="product" class="relative min-h-screen flex flex-col items-center justify-center text-center px-6 py-12 bg-gradient-to-t from-violet-500 to-transparent overflow-hidden">
+    <!-- Data Analysis SVG as background illustration -->
+    <img src="https://raw.githubusercontent.com/0o3o0/BillingSimplified/fc3232aa03c25bc9aa2dc93100f2b22ee51a3afa/undraw_data-analysis_b7cp.svg" 
+         alt="Data Analysis Illustration" 
+         class="absolute bottom-10 left-10 w-48 opacity-30 z-0">
     <!-- Corner Decorations -->
     <div class="absolute top-0 left-0 transform -translate-x-1/2 -translate-y-1/2">
       <svg width="100" height="100"><circle cx="50" cy="50" r="50" fill="rgba(167,139,250,0.3)"/></svg>
@@ -49,11 +52,12 @@
     </div>
   </section>
 
-  <!-- Why Us Section with Decorative Circles -->
+  <!-- Why Us Section -->
   <section class="py-20 px-6 text-center max-w-5xl mx-auto bg-gradient-to-tr from-violet-50 via-violet-100 to-white overflow-hidden">
-    <!-- Background Circles -->
-    <div class="absolute top-10 left-10 w-24 h-24 bg-violet-200 rounded-full opacity-30"></div>
-    <div class="absolute bottom-10 right-10 w-32 h-32 bg-violet-300 rounded-full opacity-20"></div>
+    <!-- Online Banking SVG above content -->
+    <img src="https://raw.githubusercontent.com/0o3o0/BillingSimplified/fc3232aa03c25bc9aa2dc93100f2b22ee51a3afa/undraw_online-banking_l9sn.svg"
+         alt="Online Banking Illustration"
+         class="w-32 h-32 mx-auto mb-6 opacity-30">
     <h2 class="text-4xl font-bold mb-10 text-violet-800">Why Choose Us</h2>
     <div class="grid md:grid-cols-4 gap-8">
       <div><h3 class="font-semibold text-violet-700">Quick Start</h3><p class="text-violet-600">Start billing in days, not months.</p></div>
@@ -63,12 +67,12 @@
     </div>
   </section>
 
-  <!-- Key Metrics Section with Polygon Decoration -->
+  <!-- Key Metrics Section -->
   <section class="py-20 bg-gradient-to-r from-violet-200 to-violet-100 text-center overflow-hidden">
-    <!-- Polygon SVG -->
-    <svg class="absolute top-0 right-1/2 transform translate-x-1/2 -translate-y-1/4 opacity-20" width="200" height="200" fill="none">
-      <polygon points="0,100 50,0 150,0 200,100 150,200 50,200" fill="rgba(188,188,245,0.3)" />
-    </svg>
+    <!-- Metrics SVG as subtle background -->
+    <img src="https://raw.githubusercontent.com/0o3o0/BillingSimplified/fc3232aa03c25bc9aa2dc93100f2b22ee51a3afa/undraw_metrics_5v8d.svg"
+         alt="Metrics Illustration"
+         class="absolute top-10 right-10 w-48 h-48 opacity-20 z-0">
     <h2 class="text-4xl font-bold mb-6 text-violet-900">Key Metrics</h2>
     <div class="grid md:grid-cols-3 gap-8 text-3xl font-extrabold text-violet-700">
       <div>500K+ Invoices Sent</div>
@@ -144,34 +148,28 @@
     const mainNavbar = document.getElementById("mainNavbar");
     const productSection = document.getElementById("product");
     const sections = document.querySelectorAll("section");
-
     function getSectionMiddle(section) {
       return section.offsetTop + section.offsetHeight / 2;
     }
-
     window.addEventListener("scroll", () => {
       const scrollY = window.scrollY;
       const productMiddle = getSectionMiddle(productSection);
-
       if (scrollY > productMiddle) {
         actionBar.style.top = "20px";
       } else {
         actionBar.style.top = "-100px";
       }
-
       if (scrollY > productMiddle) {
         mainNavbar.style.top = "-100px";
       } else {
         mainNavbar.style.top = "0";
       }
-
       sections.forEach(section => {
         const sectionTop = section.offsetTop;
         const sectionHeight = section.offsetHeight;
         const sectionBottom = sectionTop + sectionHeight;
         const viewMiddle = scrollY + window.innerHeight / 2;
         const viewBottom = scrollY + window.innerHeight;
-
         if ((viewMiddle > sectionTop && viewMiddle < sectionBottom) ||
             (viewBottom > sectionTop && viewBottom <= sectionBottom + window.innerHeight / 4)) {
           section.classList.add("active-section");
@@ -183,6 +181,5 @@
       });
     });
   </script>
-
 </body>
 </html>
